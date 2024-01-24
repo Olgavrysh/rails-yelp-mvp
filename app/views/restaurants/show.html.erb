@@ -4,3 +4,18 @@
 <p> Category: <%= @restaurant.category %></p>
 
 <%= link_to 'Come back to the list ', restaurants_path(@restaurant) %>
+
+
+ <h1>New review</h1>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
